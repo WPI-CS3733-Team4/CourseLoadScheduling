@@ -1,11 +1,6 @@
 package org.dselent.scheduling.server.dao;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.dselent.scheduling.server.config.AppConfig;
-import org.dselent.scheduling.server.dao.UsersDao;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.model.User;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
@@ -15,8 +10,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+import javax.sql.DataSource;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfig.class})
@@ -34,7 +34,11 @@ public class UsersDaoTest
     public void testUsersDao() throws SQLException
     {
     	// INSERT
-    	
+        AppConfig ac = new AppConfig();
+        DataSource ds = ac.dataSource();
+
+        ds.getConnection();
+
     	User user1 = new User();
     	user1.setUserName("user1");
     	user1.setFirstName("user");

@@ -1,7 +1,5 @@
 package org.dselent.scheduling.server.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,6 +14,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import javax.sql.DataSource;
+
 /**
  * AppConfig class functions as a standard Spring configuration class.
  * Configuration for the database connections are specified here.
@@ -27,19 +27,20 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @author dselent
  *
  */
+
 @Configuration
 @PropertySource("classpath:/application.properties")
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages="org.dselent.scheduling.server")
 public class AppConfig
-{	
-	
-	public static String DATABASE_URL = "database_url";
-	public static String DATABASE_USER = "database_user";
-	public static String DATABASE_PASSWORD = "database_password";
-	public static String DATABASE_DRIVER = "database_driver";
-	
+{
+
+    public static String DATABASE_URL = "jdbc:postgresql://localhost:5432/test";
+    public static String DATABASE_USER = "postgres";
+    public static String DATABASE_PASSWORD = "yyzzxx999";
+    public static String DATABASE_DRIVER = "org.postgresql.Driver";
+
 	@Autowired
 	private Environment env;
 		
@@ -47,11 +48,11 @@ public class AppConfig
 	public DataSource dataSource()
 	{
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		
-        dataSource.setUrl(env.getProperty(DATABASE_URL));
-        dataSource.setUsername(env.getProperty(DATABASE_USER));
-        dataSource.setPassword(env.getProperty(DATABASE_PASSWORD));
-        dataSource.setDriverClassName(env.getProperty(DATABASE_DRIVER));
+
+        dataSource.setUrl(DATABASE_URL);
+        dataSource.setUsername(DATABASE_USER);
+        dataSource.setPassword(DATABASE_PASSWORD);
+        dataSource.setDriverClassName(DATABASE_DRIVER);
 		
 		return dataSource;
 	}
