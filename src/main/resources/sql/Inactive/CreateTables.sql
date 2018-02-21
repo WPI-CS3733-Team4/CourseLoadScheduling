@@ -24,7 +24,7 @@ RETURNS boolean
 LANGUAGE plpgsql AS
 $body$
 BEGIN
-	IF (SELECT is_faculty FROM users WHERE id = _users_id)
+	IF 'faculty' = (SELECT role FROM users_permissions WHERE users_id = _users_id)
 	THEN
 		RETURN true;
 	END IF;
@@ -44,7 +44,7 @@ CREATE TABLE faculty (
 CREATE FUNCTION ensure_user_is_faculty() RETURNS TRIGGER AS
 $body$
 BEGIN
-	DELETE FROM faculty WHERE users_id = (SELECT OLD.id FROM OLD WHERE is_faculty = false);
+	DELETE FROM faculty WHERE users_id = (SELECT users_id FROM users_permissions WHERE NOT role = 'faculty');
 	RETURN NEW;
 END
 $body$
