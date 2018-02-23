@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.dselent.scheduling.server.dao.UsersPermissionsDao;
 import org.dselent.scheduling.server.dto.AdminChangeUserRoleDto;
-import org.dselent.scheduling.server.model.UserPermission;
+import org.dselent.scheduling.server.model.UsersPermission;
 import org.dselent.scheduling.server.service.UserPermissionService;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,8 @@ public class UserPermissionServiceImpl implements UserPermissionService
         Integer userId = dto.getUserId();
         String role = dto.getRole();
 
-        queryTermList.add(new QueryTerm(UserPermission.getColumnName(UserPermission.Columns.USERS_ID), EQUAL, userId, null));
-        rowsAffectedList.add(usersPermissionsDao.update(UserPermission.getColumnName(UserPermission.Columns.ROLE), role, queryTermList));
+        queryTermList.add(new QueryTerm(UsersPermission.getColumnName(UsersPermission.Columns.USERS_ID), EQUAL, userId, null));
+        rowsAffectedList.add(usersPermissionsDao.update(UsersPermission.getColumnName(UsersPermission.Columns.ROLE), role, queryTermList));
 
         return rowsAffectedList;
     }

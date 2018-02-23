@@ -7,7 +7,7 @@ import org.dselent.scheduling.server.dto.AdminChangeUserRoleDto;
 import org.dselent.scheduling.server.dto.UserLogoutDto;
 import org.dselent.scheduling.server.dto.UserModifyDto;
 import org.dselent.scheduling.server.dto.UserRegisterDto;
-import org.dselent.scheduling.server.model.UserPermission;
+import org.dselent.scheduling.server.model.UsersPermission;
 import org.dselent.scheduling.server.requests.AdminChangeUserRole;
 import org.springframework.stereotype.Service;
 
