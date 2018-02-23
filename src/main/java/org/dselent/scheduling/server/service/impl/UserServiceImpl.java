@@ -111,7 +111,7 @@ public class UserServiceImpl implements UserService
 			return null; // Could not find a user with that user name so dont both with everything else
 		}
 
-		User targetUser = usersList.get(1); // There should only be one anyways
+		User targetUser = usersList.get(0); // There should only be one anyways
 
 		// Check if the password and salt match
 		String saltedPassword = password + targetUser.getSalt();
