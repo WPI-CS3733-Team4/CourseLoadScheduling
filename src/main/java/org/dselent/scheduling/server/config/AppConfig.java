@@ -42,9 +42,9 @@ public class AppConfig
 //	public static String DATABASE_DRIVER = "database_driver";
 
 
-    public static String DATABASE_URL = "jdbc:postgresql://localhost:5432/course_load_scheduling";
-    public static String DATABASE_USER = "postgres";
-    public static String DATABASE_PASSWORD = "yyzzxx999";
+    public static String DATABASE_URL = "jdbc:postgresql://130.215.206.217:5432/softeng";
+    public static String DATABASE_USER = "softeng";
+    public static String DATABASE_PASSWORD = "password";
     public static String DATABASE_DRIVER = "org.postgresql.Driver";
 
 
