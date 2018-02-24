@@ -48,7 +48,7 @@ public class UsersControllerTest
     	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.USER_NAME), "dselent");
     	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.FIRST_NAME), "Doug");
     	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.LAST_NAME), "Selent");
-    	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.PASSWORD), "password1");
+    	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.PASSWORD), "passwordu1");
     	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.EMAIL), "dselent@wpi.edu");
     	String jsonString = jsonObject.toString();
 
