@@ -13,10 +13,7 @@ import java.util.Objects;
  */
 public class DepartmentRemoveDto
 {
-    private final Integer Department_Id;
-
-
-
+    private final Integer departmentId;
 
 
     // I added to the auto-generated code
@@ -25,26 +22,22 @@ public class DepartmentRemoveDto
     {
         // can add defaults if null for other places where the builder pattern is used
 
-        this.Department_Id = builder.Department_Id;
-
-
+        this.departmentId = builder.departmentId;
 
 
         // making claim that none of these can be null
         // add other state checks here as necessary
 
-        if(this.Department_Id == null)
+        if(this.departmentId == null)
         {
-            throw new IllegalStateException("Department cannot be null");
+            throw new IllegalStateException("Department id cannot be null");
         }
-
-
 
     }
 
     public Integer getDepartment()
     {
-        return Department_Id;
+        return departmentId;
     }
 
 
@@ -53,19 +46,19 @@ public class DepartmentRemoveDto
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DepartmentRemoveDto that = (DepartmentRemoveDto) o;
-        return Objects.equals(Department_Id, that.Department_Id);
+        return Objects.equals(departmentId, that.departmentId);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(Department_Id);
+        return Objects.hash(departmentId);
     }
 
     @Override
     public String toString() {
         return "DepartmentRemoveDto{" +
-                "Department_Id=" + Department_Id +
+                "DepartmentId=" + departmentId +
                 '}';
     }
 
@@ -85,24 +78,17 @@ public class DepartmentRemoveDto
     @Generated("SparkTools")
     public static final class Builder
     {
-        private Integer Department_Id;
-
-
-
-
+        private Integer departmentId;
 
         private Builder()
         {
         }
 
-        public Builder withDepartmentId(Integer Department)
+        public Builder withDepartmentId(Integer departmentId)
         {
-            this.Department_Id = Department_Id;
+            this.departmentId = departmentId;
             return this;
         }
-
-
-
 
         public DepartmentRemoveDto build()
         {

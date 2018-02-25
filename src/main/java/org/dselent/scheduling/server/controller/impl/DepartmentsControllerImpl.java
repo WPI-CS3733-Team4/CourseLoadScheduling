@@ -56,7 +56,7 @@ public class DepartmentsControllerImpl implements DepartmentsController {
         String department = request.get(DepartmentModify.getBodyName(DepartmentModify.BodyKey.DEPARTMENT));
 
         DepartmentModifyDto.Builder builder = DepartmentModifyDto.builder();
-        DepartmentModifyDto departmentModifyDto = builder.withDepartment_Id(departmentId)
+        DepartmentModifyDto departmentModifyDto = builder.withDepartmentId(departmentId)
                 .withDepartment(department)
                 .build();
 
