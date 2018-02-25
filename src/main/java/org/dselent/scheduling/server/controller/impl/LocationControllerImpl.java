@@ -62,7 +62,7 @@ public class LocationControllerImpl implements LocationController{
 
 
         LocationModifyDto.Builder builder = LocationModifyDto.builder();
-        LocationModifyDto locationModifyDto = builder.withBuilding(String.valueOf(locationId))
+        LocationModifyDto locationModifyDto = builder.withLocationId(locationId)
                 .withBuilding(buildingName)
                 .withRoom(room)
                 .withRoomSize(roomSize)
