@@ -74,9 +74,10 @@ public class CourseSectionServiceImpl implements CourseSectionService{
 
         courseSectionIdEntry.add(CourseSection.getColumnName(CourseSection.Columns.ID));
 
-        courseSectionQueryTermList.add(new QueryTerm(CourseSection.getColumnName(CourseSection.Columns.COURSES_ID),EQUAL,courseSection.getCoursesId(), LogicalOperator.AND));
-        courseSectionQueryTermList.add(new QueryTerm(CourseSection.getColumnName(CourseSection.Columns.SECTION_TYPE),EQUAL,courseSection.getSectionType(), null));
 
+        courseSectionQueryTermList.add(new QueryTerm(CourseSection.getColumnName(CourseSection.Columns.SECTION_TYPE),EQUAL,courseSection.getSectionType(), null));
+        courseSectionQueryTermList.add(new QueryTerm(CourseSection.getColumnName(CourseSection.Columns.ID),EQUAL,courseSection.getCoursesId(), LogicalOperator.AND));
+///////////////////////////////////////////////////////////////////////////////////////////////////
         List<CourseSection> courseSectionsList = courseSectionsDao.select(courseSectionIdEntry, courseSectionQueryTermList, null);
 
         if(courseSectionsList.isEmpty()){
