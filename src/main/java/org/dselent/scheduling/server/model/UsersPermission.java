@@ -5,10 +5,10 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
 
-public class UserPermission extends Model{
+public class UsersPermission extends Model{
 
     // Table Name
-    public static final String TABLE_NAME = "user_permissions";
+    public static final String TABLE_NAME = "users_permissions";
 
     // Column Names
     public static enum Columns{
@@ -135,7 +135,7 @@ public class UserPermission extends Model{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserPermission that = (UserPermission) o;
+        UsersPermission that = (UsersPermission) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(usersId, that.usersId) &&
                 Objects.equals(role, that.role) &&
