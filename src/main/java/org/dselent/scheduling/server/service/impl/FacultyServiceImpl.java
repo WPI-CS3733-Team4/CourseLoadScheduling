@@ -64,6 +64,7 @@ public class FacultyServiceImpl implements FacultyService {
         List<Integer> rowsAffectedList = new ArrayList<>();
         List<QueryTerm> queryTermList = new ArrayList<>();
 
+        Integer facultyId = dto.getFacultyId();
         Integer userId = dto.getUserId();
         Integer requiredCredits = dto.getRequiredCredits();
 
@@ -72,7 +73,7 @@ public class FacultyServiceImpl implements FacultyService {
 
 
 
-        queryTermList.add(new QueryTerm(Faculty.getColumnName(Faculty.Columns.ID),EQUAL,userId,null));
+        queryTermList.add(new QueryTerm(Faculty.getColumnName(Faculty.Columns.ID),EQUAL,facultyId,null));
 
         rowsAffectedList.add(FacultyDao.update(Faculty.getColumnName(Faculty.Columns.USERS_ID),userId,queryTermList));
         rowsAffectedList.add(FacultyDao.update(Faculty.getColumnName(Faculty.Columns.REQUIRED_CREDITS),requiredCredits,queryTermList));

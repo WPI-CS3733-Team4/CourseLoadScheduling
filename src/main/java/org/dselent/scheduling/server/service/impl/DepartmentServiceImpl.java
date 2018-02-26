@@ -68,7 +68,8 @@ public class DepartmentServiceImpl implements DepartmentService{
         List<Integer> rowsAffectedList = new ArrayList<>();
         List<QueryTerm> queryTermList = new ArrayList<>();
 
-        Integer DepartmentId = dto.getDepartment_Id();
+        Integer departmentId = dto.getDepartmentId();
+        String department = dto.getDepartment();
 
 
         /*I have no idea how to modify a Department's department. the system'll work okay without it though
@@ -76,9 +77,9 @@ public class DepartmentServiceImpl implements DepartmentService{
         //String DepartmentDept = dto.getDepartmentDept();
 
 
-        queryTermList.add(new QueryTerm(Department.getColumnName(Department.Columns.ID),EQUAL,DepartmentId,null));
+        queryTermList.add(new QueryTerm(Department.getColumnName(Department.Columns.ID),EQUAL,departmentId,null));
 
-        rowsAffectedList.add(departmentsDao.update(Department.getColumnName(Department.Columns.DEPARTMENT),DepartmentId,queryTermList));
+        rowsAffectedList.add(departmentsDao.update(Department.getColumnName(Department.Columns.DEPARTMENT),department,queryTermList));
 
         return rowsAffectedList;
     }

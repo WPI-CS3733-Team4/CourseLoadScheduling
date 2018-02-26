@@ -52,7 +52,7 @@ public class DepartmentModifyDto
     {
         return Department;
     }
-    public Integer getDepartment_Id()
+    public Integer getDepartmentId()
     {
         return Department_Id;
     }
@@ -112,7 +112,7 @@ public class DepartmentModifyDto
             this.Department = Department;
             return this;
         }
-        public Builder withDepartment_Id(Integer Department_Id)
+        public Builder withDepartmentId(Integer Department_Id)
         {
             this.Department_Id = Department_Id;
             return this;

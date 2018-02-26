@@ -36,6 +36,7 @@ import javax.sql.DataSource;
 public class AppConfig
 {
 
+
 //	public static String DATABASE_URL = "database_url";
 //	public static String DATABASE_USER = "database_user";
 //	public static String DATABASE_PASSWORD = "database_password";
@@ -86,3 +87,5 @@ public class AppConfig
         return new DataSourceTransactionManager(dataSource());
     }
 }
+
+
