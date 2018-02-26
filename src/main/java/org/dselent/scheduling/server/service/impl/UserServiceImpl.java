@@ -132,8 +132,31 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public User modifyUser(UserModifyDto userModifyDto) throws SQLException{
-    	return null;
+	public List<Integer> modifyUser(UserModifyDto userModifyDto) throws SQLException{
+		List<Integer> rowsAffectedList = new ArrayList<>();
+		List<QueryTerm> queryTermList = new ArrayList<>();
+
+		Integer id = userModifyDto.getId();
+		String userName = userModifyDto.getUserName();
+		String firstName = userModifyDto.getFirstName();
+		String lastName = userModifyDto.getLastName();
+		String email = userModifyDto.getEmail();
+
+		String salt = KeyGenerators.string().generateKey();
+		String saltedPassword = userModifyDto.getPassword() + salt;
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encryptedPassword = passwordEncoder.encode(saltedPassword);
+
+
+		queryTermList.add(new QueryTerm(User.getColumnName(User.Columns.ID), EQUAL, id, null));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.USER_NAME), userName, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.FIRST_NAME), firstName, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.LAST_NAME), lastName, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.EMAIL), email, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.ENCRYPTED_PASSWORD), encryptedPassword, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.SALT), saltedPassword, queryTermList));
+
+		return rowsAffectedList;
 	}
 
 	public List<Integer> deactivateUser(UserDeactivateDto dto) throws SQLException{
@@ -146,5 +169,10 @@ public class UserServiceImpl implements UserService
 		rowsAffectedList.add(usersDao.delete(queryTermList));
 
 		return rowsAffectedList;
+	}
+
+	public List<User> grabUsers() throws SQLException
+	{
+		return null;
 	}
 }

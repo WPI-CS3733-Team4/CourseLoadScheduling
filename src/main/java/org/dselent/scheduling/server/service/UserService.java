@@ -28,6 +28,7 @@ public interface UserService
 	public List<Integer> registerUser(UserRegisterDto userRegisterDto) throws SQLException;
     public User loginUser(UserLoginDto userLoginDto) throws SQLException;
     public User logoutUser(UserLogoutDto userLogoutDto) throws SQLException;
-    public User modifyUser(UserModifyDto userModifyDto) throws SQLException;
+    public List<Integer> modifyUser(UserModifyDto userModifyDto) throws SQLException;
     public List<Integer> deactivateUser(UserDeactivateDto dto) throws SQLException;
+    public List<User> grabUsers() throws SQLException;
 }
