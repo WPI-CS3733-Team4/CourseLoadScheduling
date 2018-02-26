@@ -55,7 +55,7 @@ public class LocationControllerImpl implements LocationController{
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
-        Integer locationId = Integer.parseInt(request.get(LocationModify.getBodyName(LocationModify.BodyKey.LOCATION_ID)));
+        Integer locationId = Integer.parseInt(request.get(LocationModify.getBodyName(LocationModify.BodyKey.LOCATIONS_ID)));
         String buildingName = request.get(LocationAdd.getBodyName(LocationAdd.BodyKey.BUILDING));
         Integer room = Integer.parseInt(request.get(LocationAdd.getBodyName(LocationAdd.BodyKey.ROOM)));
         Integer roomSize = Integer.parseInt(request.get(LocationAdd.getBodyName(LocationAdd.BodyKey.ROOM_SIZE)));
@@ -83,7 +83,7 @@ public class LocationControllerImpl implements LocationController{
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
-        Integer locationId = Integer.parseInt(request.get(LocationModify.getBodyName(LocationModify.BodyKey.LOCATION_ID)));
+        Integer locationId = Integer.parseInt(request.get(LocationModify.getBodyName(LocationModify.BodyKey.LOCATIONS_ID)));
 
         LocationRemoveDto.Builder builder = LocationRemoveDto.builder();
         LocationRemoveDto locationRemoveDto = builder.withLocationId(locationId)

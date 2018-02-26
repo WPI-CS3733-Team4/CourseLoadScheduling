@@ -40,7 +40,7 @@ public class LocationModify
     /* change this*/
     public static enum BodyKey
     {
-        LOCATION_ID,
+        LOCATIONS_ID,
         BUILDING,
         ROOM,
         ROOM_SIZE

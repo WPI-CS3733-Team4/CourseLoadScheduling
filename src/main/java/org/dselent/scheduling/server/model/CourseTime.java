@@ -17,7 +17,7 @@ public class CourseTime extends Model {
         DAY_OF_WEEK,
         START_TIME,
         END_TIME,
-        LOCATION_ID,
+        LOCATIONS_ID,
         CREATED_AT,
         UPDATED_AT
     }
@@ -39,7 +39,7 @@ public class CourseTime extends Model {
         COLUMN_TYPE_MAP.put(Columns.DAY_OF_WEEK, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(Columns.START_TIME, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(Columns.END_TIME, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Columns.LOCATION_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(Columns.LOCATIONS_ID, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(Columns.CREATED_AT, JDBCType.TIMESTAMP_WITH_TIMEZONE);
         COLUMN_TYPE_MAP.put(Columns.UPDATED_AT, JDBCType.TIMESTAMP_WITH_TIMEZONE);
     }
