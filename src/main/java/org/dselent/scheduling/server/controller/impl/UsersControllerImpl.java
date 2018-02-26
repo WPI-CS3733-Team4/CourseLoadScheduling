@@ -179,12 +179,18 @@ public class UsersControllerImpl implements UsersController
 		//get all the users (how do we do the responseSet????)
 		List<User> listOfUsers = userService.grabUsers();
 
+		List<String> userEntryList = new ArrayList<String>();
+
+		for (User user : listOfUsers){
+			userEntryList.add(user.toString());
+		}
+
 		String response = "";
 
 		List<Object> success = new ArrayList<Object>();
 
 		//Add the list of the users to the response
-		success.add(listOfUsers);
+		success.add(userEntryList);
 
 
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);

@@ -85,11 +85,17 @@ public class CourseRequestsControllerImpl implements CourseRequestsController {
 
         List<CourseRequest> listOfCourseRequests = courseRequestService.grabCourseRequests();
 
+        List<String> courseRequestEntryList = new ArrayList<String>();
+
+        for (CourseRequest courseRequest : listOfCourseRequests){
+            courseRequestEntryList.add(courseRequest.toString());
+        }
+
         String response = "";
 
         List<Object> success = new ArrayList<Object>();
 
-        success.add(listOfCourseRequests);
+        success.add(courseRequestEntryList);
 
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
         return new ResponseEntity<String>(response, HttpStatus.OK);
