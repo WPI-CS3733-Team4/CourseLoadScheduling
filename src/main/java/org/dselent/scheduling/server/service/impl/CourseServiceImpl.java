@@ -98,4 +98,18 @@ public class CourseServiceImpl implements CourseService{
 
         return rowsAffectedList;
     }
+
+    public List<Course> grabCourses() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(Course.getColumnName(Course.Columns.ID));
+        columns.add(Course.getColumnName(Course.Columns.COURSE_NAME));
+        columns.add(Course.getColumnName(Course.Columns.COURSE_DESCRIPTION));
+        columns.add(Course.getColumnName(Course.Columns.CREATED_AT));
+        columns.add(Course.getColumnName(Course.Columns.UPDATED_AT));
+
+        return coursesDao.select(columns, queryTermList, null);
+    }
 }
