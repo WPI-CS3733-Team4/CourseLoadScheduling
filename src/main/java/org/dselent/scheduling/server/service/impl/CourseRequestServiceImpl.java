@@ -65,4 +65,19 @@ public class CourseRequestServiceImpl implements CourseRequestService
 
         return rowsAffectedList;
     }
+
+    public List<CourseRequest> grabCourseRequests() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(CourseRequest.getColumnName(CourseRequest.Columns.ID));
+        columns.add(CourseRequest.getColumnName(CourseRequest.Columns.FACULTY_ID));
+        columns.add(CourseRequest.getColumnName(CourseRequest.Columns.COURSE_SECTIONS_ID));
+        columns.add(CourseRequest.getColumnName(CourseRequest.Columns.CREATED_AT));
+        columns.add(CourseRequest.getColumnName(CourseRequest.Columns.UPDATED_AT));
+
+
+        return courseRequestsDao.select(columns, queryTermList, null);
+    }
 }

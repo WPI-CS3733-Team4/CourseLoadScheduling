@@ -40,7 +40,7 @@ public class UserPermissionServiceImpl implements UserPermissionService
     {
         List<QueryTerm> queryTermList = new ArrayList<>();
 
-        
+
         List<String> columns = new ArrayList<>();
         columns.add(UsersPermission.getColumnName(UsersPermission.Columns.ID));
         columns.add(UsersPermission.getColumnName(UsersPermission.Columns.USERS_ID));

@@ -19,6 +19,7 @@ public interface CourseRequestsController
     @RequestMapping(method=RequestMethod.POST, value= UserModify.REQUEST_NAME)
     public ResponseEntity<String> unrequest(@RequestBody Map<String, String> request) throws Exception;
 
-
+    @RequestMapping(method=RequestMethod.POST, value= "getCourseRequests")
+    public ResponseEntity<String> getCourseRequests(@RequestBody Map<String, String> request) throws Exception;
 
 }

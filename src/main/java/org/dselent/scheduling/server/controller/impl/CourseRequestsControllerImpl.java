@@ -8,6 +8,7 @@ import org.dselent.scheduling.server.controller.CourseRequestsController;
 import org.dselent.scheduling.server.dto.FacultyRequestCourseDto;
 import org.dselent.scheduling.server.dto.FacultyUnrequestCourseDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.CourseRequest;
 import org.dselent.scheduling.server.requests.FacultyRequestCourse;
 import org.dselent.scheduling.server.requests.FacultyUnrequestCourse;
 import org.dselent.scheduling.server.service.CourseRequestService;
@@ -76,6 +77,22 @@ public class CourseRequestsControllerImpl implements CourseRequestsController {
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
+    }
+
+    public ResponseEntity<String> getCourseRequests(@RequestBody Map<String, String> request) throws Exception
+    {
+        System.out.println("Users controller reached");
+
+        List<CourseRequest> listOfCourseRequests = courseRequestService.grabCourseRequests();
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        success.add(listOfCourseRequests);
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+        return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 }
 
