@@ -17,4 +17,7 @@ public interface  LocationController {
 
     @RequestMapping(method = RequestMethod.POST, value = LocationRemove.REQUEST_NAME)
     public ResponseEntity<String> locationRemove(@RequestBody Map<String, String> request) throws Exception;
+
+    @RequestMapping(method=RequestMethod.POST, value= "getLocations")
+    public ResponseEntity<String> getLocations(@RequestBody Map<String, String> request) throws Exception;
 }

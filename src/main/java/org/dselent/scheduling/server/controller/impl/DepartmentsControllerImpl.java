@@ -7,6 +7,7 @@ import java.util.Map;
 import org.dselent.scheduling.server.controller.DepartmentsController;
 import org.dselent.scheduling.server.dto.*;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.Department;
 import org.dselent.scheduling.server.requests.*;
 import org.dselent.scheduling.server.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,25 @@ public class DepartmentsControllerImpl implements DepartmentsController {
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    public ResponseEntity<String> getDepartments(@RequestBody Map<String, String> request) throws Exception
+    {
+        System.out.println("Departments controller reached");
+
+
+
+        List<Department> listOfUsers = departmentService.grabDepartments();
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        //Add the list of the users to the response
+        success.add(listOfUsers);
+
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+        return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
 }

@@ -9,6 +9,7 @@ import org.dselent.scheduling.server.dto.CourseSectionTimeAddDto;
 import org.dselent.scheduling.server.dto.CourseSectionTimeModifyDto;
 import org.dselent.scheduling.server.dto.CourseSectionTimeRemoveDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.CourseTime;
 import org.dselent.scheduling.server.requests.CourseSectionTimeRemove;
 import org.dselent.scheduling.server.requests.CourseSectionTimeModify;
 import org.dselent.scheduling.server.requests.CourseSectionTimeAdd;
@@ -120,6 +121,26 @@ public class CourseSectionTimesControllerImpl implements CourseSectionTimesContr
         courseSectionTimeService.removeCourseSectionTime(termRemoveDto);
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
+        return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
+    }
+
+    public ResponseEntity<String> getCourseSectionTimes(@RequestBody Map<String, String> request) throws Exception
+    {
+        System.out.println("Users controller reached");
+
+
+        //get all the users (how do we do the responseSet????)
+        List<CourseTime> listOfCourseSectionTimes = courseSectionTimeService.grabCourseSectionTimes();
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        //Add the list of the users to the response
+        success.add(listOfCourseSectionTimes);
+
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
         return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
 }
