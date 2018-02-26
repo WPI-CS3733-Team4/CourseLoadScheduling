@@ -9,14 +9,15 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -47,11 +48,11 @@ public class UsersControllerTest
     	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.USER_NAME), "dselent");
     	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.FIRST_NAME), "Doug");
     	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.LAST_NAME), "Selent");
-    	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.PASSWORD), "password1");
+    	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.PASSWORD), "passwordu1");
     	jsonObject.put(UserRegister.getBodyName(UserRegister.BodyKey.EMAIL), "dselent@wpi.edu");
     	String jsonString = jsonObject.toString();
-        
-    	// System.out.println(jsonString);
+
+		System.out.println(jsonString);
     	
         this.mockMvc.perform(post("/user/register").content(jsonString)
         .contentType(MediaType.APPLICATION_JSON_VALUE)

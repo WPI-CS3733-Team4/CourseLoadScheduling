@@ -104,7 +104,7 @@ public class UsersDaoTest
     	
 		@SuppressWarnings("unused")
 		List<User> selectedUserList = usersDao.select(selectColumnNameList, selectQueryTermList, orderByList);
-    	
-    	System.out.println();
+
+		System.out.print(selectedUserList);
     }
 }
