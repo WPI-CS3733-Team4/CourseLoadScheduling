@@ -48,6 +48,10 @@ public class TermsControllerImpl implements TermsController
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
+
+        success.add("{'json_test':{'item1':1,'item2':2}");
+        success.add("balbalalbsabld");
+
         String termName = request.get(TermAdd.getBodyName(TermAdd.BodyKey.TERM_NAME));
 
         TermAddDto.Builder builder = TermAddDto.builder();

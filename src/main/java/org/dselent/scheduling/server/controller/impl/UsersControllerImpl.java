@@ -31,8 +31,8 @@ public class UsersControllerImpl implements UsersController
 	@Autowired
     private UserService userService;
 
-	@Autowired
-	private UsersExtractor usersExtractor;
+//	@Autowired
+//	private UsersExtractor usersExtractor;
     
 	/**
 	 * 
