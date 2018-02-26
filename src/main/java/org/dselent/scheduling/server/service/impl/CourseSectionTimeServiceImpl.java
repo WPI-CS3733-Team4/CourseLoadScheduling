@@ -101,4 +101,21 @@ public class CourseSectionTimeServiceImpl implements CourseSectionTimeService{
 
         return rowsAffectedList;
     }
+
+    public List<CourseTime> grabCourseSectionTimes() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.ID));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.COURSE_SECTIONS_ID));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.DAY_OF_WEEK));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.START_TIME));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.END_TIME));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.LOCATIONS_ID));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.CREATED_AT));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.UPDATED_AT));
+
+        return courseTimesDao.select(columns, queryTermList, null);
+    }
 }

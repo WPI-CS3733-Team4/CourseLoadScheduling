@@ -97,4 +97,17 @@ public class DepartmentServiceImpl implements DepartmentService{
 
         return rowsAffectedList;
     }
+
+    public List<Department> grabDepartments() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(Department.getColumnName(Department.Columns.ID));
+        columns.add(Department.getColumnName(Department.Columns.DEPARTMENT));
+        columns.add(Department.getColumnName(Department.Columns.CREATED_AT));
+        columns.add(Department.getColumnName(Department.Columns.UPDATED_AT));
+
+        return departmentsDao.select(columns, queryTermList, null);
+    }
 }
