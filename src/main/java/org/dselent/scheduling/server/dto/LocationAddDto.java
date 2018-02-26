@@ -82,11 +82,11 @@ public class LocationAddDto {
 
     @Override
     public String toString() {
-        return "{" +
-                "\'Building\'=\'" + Building + '\'' +
-                ", \'Room\'=\'" + Room +
-                "\', \'RoomSize\'=\'" + RoomSize +
-                "\'}";
+        return "{"+
+                "\'Building\'=\'"+Building+"\'"+
+                ",\'Room\'=\'"+Room+"\'"+"\'"+
+                ",\'RoomSize\'=\'"+RoomSize +"\'"+
+                "}";
     }
 
     /**

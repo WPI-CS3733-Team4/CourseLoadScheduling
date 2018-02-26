@@ -98,11 +98,11 @@ public class CourseSectionModifyDto
 
     @Override
     public String toString() {
-        return "{" +
-                "\'CourseSectionId\'=\'" + CourseSectionId +
-                "\', \'CourseId\'=\'" + CourseId +
-                "\', \'SectionType\'=\'" + SectionType + '\'' +
-                ", \'Term\'=\'" + Term + '\'' +
+        return "{"+
+                "\'CourseSectionId\'=\'"+CourseSectionId+"\'"+ 
+                ",\'CourseId\'=\'"+CourseId+"\'"+
+                ",\'SectionType\'=\'"+SectionType+"\'"+
+                ",\'Term\'=\'"+Term+"\'"+
                 '}';
     }
 

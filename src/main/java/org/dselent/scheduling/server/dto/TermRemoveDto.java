@@ -55,9 +55,9 @@ public class TermRemoveDto
 
     @Override
     public String toString() {
-        return "{" +
-                "\'TermId\'=\'" + TermId +
-                "\'}";
+        return "{"+
+                "\'TermId\'=\'"+TermId+"\'"+
+                "}";
     }
 
     /**

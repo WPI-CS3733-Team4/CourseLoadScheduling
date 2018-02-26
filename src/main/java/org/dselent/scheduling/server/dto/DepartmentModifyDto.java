@@ -76,9 +76,9 @@ public class DepartmentModifyDto
     @Override
     public String toString() {
         return "{" +
-                "\'Department\'=\'" + Department +
-                "\', \'Department_Id\'=\'" + Department_Id +
-                "\'}";
+                "\'Department\'=\'"+Department+"\'"+
+                ",\'Department_Id\'=\'"+Department_Id+"\'"+
+                "}";
     }
 
     /**

@@ -67,9 +67,9 @@ public class LocationRemoveDto {
 
     @Override
     public String toString() {
-        return "{" +
-                "\'LocationId\'=\'" + LocationId +
-                "\'}";
+        return "{"+
+                "\'LocationId\'=\'"+LocationId +"\'"+
+                "}";
     }
 
     /**

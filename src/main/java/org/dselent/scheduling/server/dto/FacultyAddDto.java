@@ -74,10 +74,10 @@ public class FacultyAddDto
 
     @Override
     public String toString() {
-        return "{" +
-                "\'UserId\'=\'" + UserId +
-                "\', \'RequiredCredits\'=\'" + RequiredCredits +
-                "\'}";
+        return "{"+
+                "\'UserId\'=\'"+UserId+"\'"+
+                ",\'RequiredCredits\'=\'"+RequiredCredits+"\'"+
+                "}";
     }
 
     /**

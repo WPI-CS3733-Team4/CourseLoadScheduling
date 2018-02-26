@@ -120,10 +120,10 @@ public class CourseAddDto {
 
     @Override
     public String toString() {
-        return "{" +
-                "\'courseName\'=\'" + courseName + '\'' +
-                ", \'courseDept\'=\'" + courseDept + '\'' +
-                ", \'courseDescription\'=\'" + courseDescription + '\'' +
+        return "{"+
+                "\'courseName\'=\'"+courseName+"\'"+
+                ",\'courseDept\'=\'"+courseDept+"\'"+
+                ",\'courseDescription\'=\'"+courseDescription+"\'"+
                 '}';
     }
     /**

@@ -67,9 +67,9 @@ public class FacultyRemoveDto
 
     @Override
     public String toString() {
-        return "{" +
-                "\'FacultyId\'=\'" + FacultyId +
-                "\'}";
+        return "{"+
+                "\'FacultyId\'=\'"+FacultyId+"\'"+
+                "}";
     }
 
     /**

@@ -70,9 +70,9 @@ public class UserLogoutDto
 
     @Override
     public String toString() {
-        return "{" +
-                "\'userId=\'" + userId + '\'' +
-                '}';
+        return "{"+
+                "\'userId=\'"+userId+"\'"+
+                "}";
     }
 
     /**

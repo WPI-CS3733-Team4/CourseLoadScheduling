@@ -64,9 +64,9 @@ public class FacultyUnrequestCourseDto
 
     @Override
     public String toString() {
-        return "{" +
-                "\'CourseSectionId\'=\'" + CourseSectionId +
-                "\'}";
+        return "{"+
+                "\'CourseSectionId\'=\'"+CourseSectionId+"\'"+
+                "}";
     }
 
     /**

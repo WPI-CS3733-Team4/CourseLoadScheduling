@@ -68,10 +68,10 @@ public class UserLoginDto
 
     @Override
     public String toString() {
-        return "{" +
-                "\'userName\'=\'" + userName + '\'' +
-                ", \'password\'=\'" + password + '\'' +
-                '}';
+        return "{"+
+                "\'userName\'=\'"+userName+"\'"+
+                ",\'password\'=\'"+password+"\'"+
+                "}";
     }
 
     /**
@@ -83,6 +83,7 @@ public class UserLoginDto
     {
         return new Builder();
     }
+    /**
 
     /**
      * Builder to build {@link UserRegisterDto}.

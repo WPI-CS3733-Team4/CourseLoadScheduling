@@ -74,10 +74,10 @@ public class TermModifyDto
 
     @Override
     public String toString() {
-        return "{" +
-                "\'TermId\'=\'" + TermId +
-                "\', \'TermName=\'" + TermName + '\'' +
-                '}';
+        return "{"+
+                "\'TermId\'=\'"+TermId+"\'"+
+                ",\'TermName=\'"+TermName+"\'"+
+                "}";
     }
 
     /**
