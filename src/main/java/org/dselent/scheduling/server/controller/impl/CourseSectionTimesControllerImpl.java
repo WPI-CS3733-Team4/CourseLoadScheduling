@@ -132,6 +132,12 @@ public class CourseSectionTimesControllerImpl implements CourseSectionTimesContr
         //get all the users (how do we do the responseSet????)
         List<CourseTime> listOfCourseSectionTimes = courseSectionTimeService.grabCourseSectionTimes();
 
+        List<String> courseSectionTimesEntryList = new ArrayList<String>();
+
+        for (CourseTime courseSectionTimes : listOfCourseSectionTimes){
+            courseSectionTimesEntryList.add(courseSectionTimes.toString());
+        }
+
         String response = "";
 
         List<Object> success = new ArrayList<Object>();

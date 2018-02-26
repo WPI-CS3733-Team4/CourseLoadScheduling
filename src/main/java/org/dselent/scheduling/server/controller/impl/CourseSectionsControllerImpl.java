@@ -106,12 +106,18 @@ public class CourseSectionsControllerImpl implements CourseSectionsController{
         //get all the users (how do we do the responseSet????)
         List<CourseSection> listOfCourseSections = courseSectionService.grabCourseSections();
 
+        List<String> courseSectionEntryList = new ArrayList<String>();
+
+        for (CourseSection courseSection : listOfCourseSections){
+            courseSectionEntryList.add(courseSection.toString());
+        }
+
         String response = "";
 
         List<Object> success = new ArrayList<Object>();
 
         //Add the list of the users to the response
-        success.add(listOfCourseSections);
+        success.add(courseSectionEntryList);
 
 
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
