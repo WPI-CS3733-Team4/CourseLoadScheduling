@@ -14,4 +14,5 @@ import org.springframework.stereotype.Service;
 public interface UserPermissionService
 {
     public List<Integer> changeUserRole(AdminChangeUserRoleDto dto) throws SQLException;
+    public List<UsersPermission> grabUsersPermissions() throws SQLException;
 }

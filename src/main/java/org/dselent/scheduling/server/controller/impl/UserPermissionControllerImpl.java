@@ -3,6 +3,7 @@ package org.dselent.scheduling.server.controller.impl;
 import org.dselent.scheduling.server.controller.UserPermissionController;
 import org.dselent.scheduling.server.dto.AdminChangeUserRoleDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.UsersPermission;
 import org.dselent.scheduling.server.requests.AdminChangeUserRole;
 import org.dselent.scheduling.server.service.UserPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,22 @@ public class UserPermissionControllerImpl implements UserPermissionController{
 
     public ResponseEntity<String> getUserPermissions(@RequestBody Map<String, String> request) throws Exception
     {
-        return null;
+        System.out.println("Users controller reached");
+
+
+        //get all the users (how do we do the responseSet????)
+        List<UsersPermission> listOfUsersPermissions = usersPermissionService.grabUsersPermissions();
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        //Add the list of the users to the response
+        success.add(listOfUsersPermissions);
+
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+        return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
 
 }
