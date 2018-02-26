@@ -45,8 +45,10 @@ public class UserServiceImpl implements UserService
 
 		String salt = KeyGenerators.string().generateKey();
 		String saltedPassword = dto.getPassword() + salt;
-		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
-		String encryptedPassword = passwordEncorder.encode(saltedPassword);
+		System.out.println(saltedPassword);
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String encryptedPassword = passwordEncoder.encode(saltedPassword);
+        String encryptedPassword = saltedPassword;
 		
 		User user = new User();
 		user.setUserName(dto.getUserName());
@@ -107,7 +109,7 @@ public class UserServiceImpl implements UserService
 		// Create Query Term
 		queryTermList.add(new QueryTerm(User.getColumnName(User.Columns.USER_NAME), EQUAL, userName, null));
 
-		System.out.println(userName+queryTermList.toString());
+//		System.out.println(userName+queryTermList.toString());
 
 		List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
 		Pair<String, ColumnOrder> orderPair1 = new Pair<String, ColumnOrder>(User.getColumnName(User.Columns.USER_NAME), ColumnOrder.ASC);
@@ -115,7 +117,7 @@ public class UserServiceImpl implements UserService
 
 		List<User> usersList = usersDao.select(userSelectColumnNameList, queryTermList, orderByList);
 
-		System.out.println(usersList.toString());
+//		System.out.println(usersList.toString());
 
 		if(usersList.isEmpty()){
 			System.out.println("userNotFound");
@@ -127,8 +129,11 @@ public class UserServiceImpl implements UserService
 
 		// Check if the password and salt match
 		String saltedPassword = password + targetUser.getSalt();
-		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
-		String encryptedPassword = passwordEncorder.encode(saltedPassword);
+
+		System.out.println(saltedPassword);
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String encryptedPassword = passwordEncoder.encode(saltedPassword);
+        String encryptedPassword = saltedPassword;
 		System.out.println(targetUser.getSalt()+' '+encryptedPassword+' '+targetUser.getEncryptedPassword());
 		if(encryptedPassword.equals(targetUser.getEncryptedPassword())){
 			return targetUser;
