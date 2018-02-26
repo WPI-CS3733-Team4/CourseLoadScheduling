@@ -39,6 +39,11 @@ public class UserPermissionControllerImpl implements UserPermissionController{
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 
+    public ResponseEntity<String> getUserPermissions(@RequestBody Map<String, String> request) throws Exception
+    {
+        return null;
+    }
+
 }
 
 
