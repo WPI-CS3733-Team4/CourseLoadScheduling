@@ -66,12 +66,12 @@ public class DepartmentAddDto
     public String toString() {
         return "{"+
                 "\'Department\'=\'"+Department+"\'"+
-                "\'}";
+                "}";
     }
 
     /**
      * Creates builder to build {@link DepartmentAddDto}.
-     * @return created builder
+     * @return created builderDepartment_Id
      */
     @Generated("SparkTools")
     public static Builder builder()
