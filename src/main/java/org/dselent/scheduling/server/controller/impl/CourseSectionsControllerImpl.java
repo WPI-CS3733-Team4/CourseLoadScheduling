@@ -117,4 +117,5 @@ public class CourseSectionsControllerImpl implements CourseSectionsController{
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
         return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
+
 }
