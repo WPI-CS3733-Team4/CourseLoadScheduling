@@ -74,9 +74,10 @@ public class CourseSectionServiceImpl implements CourseSectionService{
 
         courseSectionIdEntry.add(CourseSection.getColumnName(CourseSection.Columns.ID));
 
-        courseSectionQueryTermList.add(new QueryTerm(CourseSection.getColumnName(CourseSection.Columns.COURSES_ID),EQUAL,courseSection.getCoursesId(), LogicalOperator.AND));
-        courseSectionQueryTermList.add(new QueryTerm(CourseSection.getColumnName(CourseSection.Columns.SECTION_TYPE),EQUAL,courseSection.getSectionType(), null));
 
+        courseSectionQueryTermList.add(new QueryTerm(CourseSection.getColumnName(CourseSection.Columns.SECTION_TYPE),EQUAL,courseSection.getSectionType(), null));
+        courseSectionQueryTermList.add(new QueryTerm(CourseSection.getColumnName(CourseSection.Columns.ID),EQUAL,courseSection.getCoursesId(), LogicalOperator.AND));
+///////////////////////////////////////////////////////////////////////////////////////////////////
         List<CourseSection> courseSectionsList = courseSectionsDao.select(courseSectionIdEntry, courseSectionQueryTermList, null);
 
         if(courseSectionsList.isEmpty()){
@@ -175,5 +176,19 @@ public class CourseSectionServiceImpl implements CourseSectionService{
 
         return rowsAffectedList;
 
+    }
+
+    public List<CourseSection> grabCourseSections() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.ID));
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.COURSES_ID));
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.SECTION_TYPE));
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.CREATED_AT));
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.UPDATED_AT));
+
+        return courseSectionsDao.select(columns, queryTermList, null);
     }
 }

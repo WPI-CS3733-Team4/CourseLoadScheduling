@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.dselent.scheduling.server.dao.UsersDao;
 import org.dselent.scheduling.server.dto.*;
+import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.model.User;
 import org.dselent.scheduling.server.service.UserService;
+import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -43,8 +45,10 @@ public class UserServiceImpl implements UserService
 
 		String salt = KeyGenerators.string().generateKey();
 		String saltedPassword = dto.getPassword() + salt;
-		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
-		String encryptedPassword = passwordEncorder.encode(saltedPassword);
+		System.out.println(saltedPassword);
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String encryptedPassword = passwordEncoder.encode(saltedPassword);
+        String encryptedPassword = saltedPassword;
 		
 		User user = new User();
 		user.setUserName(dto.getUserName());
@@ -69,7 +73,7 @@ public class UserServiceImpl implements UserService
     	userKeyHolderColumnNameList.add(User.getColumnName(User.Columns.UPDATED_AT));
 		
     	rowsAffectedList.add(usersDao.insert(user, userInsertColumnNameList, userKeyHolderColumnNameList));
-
+		System.out.println("user reg done!");
 		//
      	
     	// for now, assume users can only register with default role id
@@ -105,19 +109,32 @@ public class UserServiceImpl implements UserService
 		// Create Query Term
 		queryTermList.add(new QueryTerm(User.getColumnName(User.Columns.USER_NAME), EQUAL, userName, null));
 
-		List<User> usersList = usersDao.select(userSelectColumnNameList, queryTermList, null);
+//		System.out.println(userName+queryTermList.toString());
+
+		List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
+		Pair<String, ColumnOrder> orderPair1 = new Pair<String, ColumnOrder>(User.getColumnName(User.Columns.USER_NAME), ColumnOrder.ASC);
+		orderByList.add(orderPair1);
+
+		List<User> usersList = usersDao.select(userSelectColumnNameList, queryTermList, orderByList);
+
+//		System.out.println(usersList.toString());
 
 		if(usersList.isEmpty()){
+			System.out.println("userNotFound");
 			return null; // Could not find a user with that user name so dont both with everything else
 		}
 
+		System.out.println("userFound");
 		User targetUser = usersList.get(0); // There should only be one anyways
 
 		// Check if the password and salt match
 		String saltedPassword = password + targetUser.getSalt();
-		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
-		String encryptedPassword = passwordEncorder.encode(saltedPassword);
 
+		System.out.println(saltedPassword);
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String encryptedPassword = passwordEncoder.encode(saltedPassword);
+        String encryptedPassword = saltedPassword;
+		System.out.println(targetUser.getSalt()+' '+encryptedPassword+' '+targetUser.getEncryptedPassword());
 		if(encryptedPassword.equals(targetUser.getEncryptedPassword())){
 			return targetUser;
 		} else {
@@ -132,8 +149,31 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public User modifyUser(UserModifyDto userModifyDto) throws SQLException{
-    	return null;
+	public List<Integer> modifyUser(UserModifyDto userModifyDto) throws SQLException{
+		List<Integer> rowsAffectedList = new ArrayList<>();
+		List<QueryTerm> queryTermList = new ArrayList<>();
+
+		Integer id = userModifyDto.getId();
+		String userName = userModifyDto.getUserName();
+		String firstName = userModifyDto.getFirstName();
+		String lastName = userModifyDto.getLastName();
+		String email = userModifyDto.getEmail();
+
+		String salt = KeyGenerators.string().generateKey();
+		String saltedPassword = userModifyDto.getPassword() + salt;
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encryptedPassword = passwordEncoder.encode(saltedPassword);
+
+
+		queryTermList.add(new QueryTerm(User.getColumnName(User.Columns.ID), EQUAL, id, null));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.USER_NAME), userName, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.FIRST_NAME), firstName, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.LAST_NAME), lastName, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.EMAIL), email, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.ENCRYPTED_PASSWORD), encryptedPassword, queryTermList));
+		rowsAffectedList.add(usersDao.update(User.getColumnName(User.Columns.SALT), saltedPassword, queryTermList));
+
+		return rowsAffectedList;
 	}
 
 	public List<Integer> deactivateUser(UserDeactivateDto dto) throws SQLException{
@@ -146,5 +186,23 @@ public class UserServiceImpl implements UserService
 		rowsAffectedList.add(usersDao.delete(queryTermList));
 
 		return rowsAffectedList;
+	}
+
+	public List<User> grabUsers() throws SQLException
+	{
+		List<QueryTerm> queryTermList = new ArrayList<>();
+
+		List<String> columns = new ArrayList<>();
+		columns.add(User.getColumnName(User.Columns.ID));
+		columns.add(User.getColumnName(User.Columns.USER_NAME));
+		columns.add(User.getColumnName(User.Columns.FIRST_NAME));
+		columns.add(User.getColumnName(User.Columns.LAST_NAME));
+		columns.add(User.getColumnName(User.Columns.EMAIL));
+		columns.add(User.getColumnName(User.Columns.ENCRYPTED_PASSWORD));
+		columns.add(User.getColumnName(User.Columns.SALT));
+		columns.add(User.getColumnName(User.Columns.CREATED_AT));
+		columns.add(User.getColumnName(User.Columns.UPDATED_AT));
+
+		return usersDao.select(columns, queryTermList, null);
 	}
 }

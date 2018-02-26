@@ -171,17 +171,17 @@ public class UserRegisterDto
 	public String toString()
 	{
 		StringBuilder builder = new StringBuilder();
-		builder.append("UserRegisterDto [userName=");
+		builder.append("{\'userName\'=\'");
 		builder.append(userName);
-		builder.append(", firstName=");
+		builder.append("\', \'firstName\'=\'");
 		builder.append(firstName);
-		builder.append(", lastName=");
+		builder.append("\', \'lastName\'=\'");
 		builder.append(lastName);
-		builder.append(", email=");
+		builder.append("\', \'email\'=\'");
 		builder.append(email);
-		builder.append(", password=");
+		builder.append("\', \'password\'=\'");
 		builder.append(password);
-		builder.append("]");
+		builder.append("\'}");
 		return builder.toString();
 	}
 

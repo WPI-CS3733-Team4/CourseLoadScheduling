@@ -151,12 +151,11 @@ public class CourseSectionTerm extends Model{
 
     @Override
     public String toString() {
-        return "CourseSectionTerm{" +
-                "id=" + id +
-                ", courseSectionsId=" + courseSectionsId +
-                ", termsId=" + termsId +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', \'courseSectionsId\'=\'" + courseSectionsId +
+                "\', \'termsId\'=\'" + termsId +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }

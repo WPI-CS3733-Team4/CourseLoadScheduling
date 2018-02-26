@@ -85,7 +85,7 @@ public class CourseTimesDaoImpl extends BaseDaoImpl<CourseTime> implements Cours
         {
             parameters.addValue(parameterName, courseTimeModel.getEndTime());
         }
-        else if(insertColumnName.equals(CourseTime.getColumnName(CourseTime.Columns.LOCATION_ID)))
+        else if(insertColumnName.equals(CourseTime.getColumnName(CourseTime.Columns.LOCATIONS_ID)))
         {
             parameters.addValue(parameterName, courseTimeModel.getLocationID());
         }
@@ -128,7 +128,7 @@ public class CourseTimesDaoImpl extends BaseDaoImpl<CourseTime> implements Cours
         {
             courseTimeModel.setEndTime((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(CourseTime.getColumnName(CourseTime.Columns.LOCATION_ID)))
+        else if(keyHolderColumnName.equals(CourseTime.getColumnName(CourseTime.Columns.LOCATIONS_ID)))
         {
             courseTimeModel.setLocationID((Integer) keyMap.get(keyHolderColumnName));
         }

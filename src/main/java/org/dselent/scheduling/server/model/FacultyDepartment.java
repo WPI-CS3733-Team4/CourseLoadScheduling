@@ -152,12 +152,11 @@ public class FacultyDepartment extends Model {
 
     @Override
     public String toString() {
-        return "FacultyDepartment{" +
-                "id=" + id +
-                ", facultyID=" + facultyID +
-                ", departmentsID=" + departmentsID +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', \'facultyID\'=\'" + facultyID +
+                "\', \'departmentsID\'=\'" + departmentsID +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }

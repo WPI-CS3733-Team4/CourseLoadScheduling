@@ -36,17 +36,16 @@ import javax.sql.DataSource;
 public class AppConfig
 {
 
+	public static String DATABASE_URL = "database_url";
+	public static String DATABASE_USER = "database_user";
+	public static String DATABASE_PASSWORD = "database_password";
+	public static String DATABASE_DRIVER = "database_driver";
 
-//	public static String DATABASE_URL = "database_url";
-//	public static String DATABASE_USER = "database_user";
-//	public static String DATABASE_PASSWORD = "database_password";
-//	public static String DATABASE_DRIVER = "database_driver";
 
-
-    public static String DATABASE_URL = "jdbc:postgresql://130.215.206.217:5432/softeng";
-    public static String DATABASE_USER = "softeng";
-    public static String DATABASE_PASSWORD = "password";
-    public static String DATABASE_DRIVER = "org.postgresql.Driver";
+//    public static String DATABASE_URL = "jdbc:postgresql://130.215.206.217:5432/softeng";
+//    public static String DATABASE_USER = "softeng";
+//    public static String DATABASE_PASSWORD = "password";
+//    public static String DATABASE_DRIVER = "org.postgresql.Driver";
 
 
 	@Autowired
@@ -57,15 +56,15 @@ public class AppConfig
 	{
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-//		dataSource.setUrl(env.getProperty(DATABASE_URL));
-//		dataSource.setUsername(env.getProperty(DATABASE_USER));
-//		dataSource.setPassword(env.getProperty(DATABASE_PASSWORD));
-//		dataSource.setDriverClassName(Objects.requireNonNull(env.getProperty(DATABASE_DRIVER)));
+		dataSource.setUrl(env.getProperty(DATABASE_URL));
+		dataSource.setUsername(env.getProperty(DATABASE_USER));
+		dataSource.setPassword(env.getProperty(DATABASE_PASSWORD));
+		dataSource.setDriverClassName(env.getProperty(DATABASE_DRIVER));
 //
-        dataSource.setUrl(DATABASE_URL);
-        dataSource.setUsername(DATABASE_USER);
-        dataSource.setPassword(DATABASE_PASSWORD);
-        dataSource.setDriverClassName(DATABASE_DRIVER);
+//        dataSource.setUrl(DATABASE_URL);
+//        dataSource.setUsername(DATABASE_USER);
+//        dataSource.setPassword(DATABASE_PASSWORD);
+//        dataSource.setDriverClassName(DATABASE_DRIVER);
 		return dataSource;
 	}
 	
@@ -87,5 +86,3 @@ public class AppConfig
         return new DataSourceTransactionManager(dataSource());
     }
 }
-
-

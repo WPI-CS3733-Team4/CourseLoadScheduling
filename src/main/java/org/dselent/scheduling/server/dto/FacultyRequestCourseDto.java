@@ -74,10 +74,10 @@ public class FacultyRequestCourseDto
 
     @Override
     public String toString() {
-        return "FacultyRequestCourseDto{" +
-                "CourseSectionId=" + CourseSectionId +
-                ", FacultyId=" + FacultyId +
-                '}';
+        return "{"+
+                "\'CourseSectionId\'=\'"+CourseSectionId+"\'"+
+                ",\'FacultyId\'=\'"+FacultyId+"\'"+
+                "}";
     }
 
     /**

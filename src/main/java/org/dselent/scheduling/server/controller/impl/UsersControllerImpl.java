@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.dselent.scheduling.server.controller.UsersController;
 import org.dselent.scheduling.server.dto.*;
+import org.dselent.scheduling.server.extractor.UsersExtractor;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.User;
 import org.dselent.scheduling.server.requests.*;
 import org.dselent.scheduling.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.jws.soap.SOAPBinding;
 
 /**
  * Controller for handling requests related to the user such as logging in or registering.
@@ -28,6 +32,9 @@ public class UsersControllerImpl implements UsersController
 {
 	@Autowired
     private UserService userService;
+
+//	@Autowired
+//	private UsersExtractor usersExtractor;
     
 	/**
 	 * 
@@ -67,7 +74,7 @@ public class UsersControllerImpl implements UsersController
 	public ResponseEntity<String> login(@RequestBody Map<String, String> request) throws Exception
 	{
 		// Print is for testing purposes
-		System.out.println("Users controller reached");
+//		System.out.println("Users controller reached");
 
 		// add any objects that need to be returned to the success list
 		String response = "";
@@ -81,7 +88,14 @@ public class UsersControllerImpl implements UsersController
 				.withPassword(password)
 				.build();
 
-		userService.loginUser(userLoginDto);
+		User retUser =  userService.loginUser(userLoginDto);
+		if(retUser != null){
+
+			success.add(retUser);
+		}else{
+
+			success.add("WRONG_INFO");
+		}
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
@@ -154,6 +168,32 @@ public class UsersControllerImpl implements UsersController
 		userService.deactivateUser(userDeactivateDto);
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
+		return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
+	}
+
+	public ResponseEntity<String> get(@RequestBody Map<String, String> request) throws Exception
+	{
+		System.out.println("Users controller reached");
+
+
+		//get all the users (how do we do the responseSet????)
+		List<User> listOfUsers = userService.grabUsers();
+
+		List<String> userEntryList = new ArrayList<String>();
+
+		for (User user : listOfUsers){
+			userEntryList.add(user.toString());
+		}
+
+		String response = "";
+
+		List<Object> success = new ArrayList<Object>();
+
+		//Add the list of the users to the response
+		success.add(userEntryList);
+
+
+		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 		return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
 	}
 }

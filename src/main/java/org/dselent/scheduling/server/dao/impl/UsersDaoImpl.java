@@ -48,11 +48,11 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 		{
 			objectList.add(queryTerm.getValue());
 		}
-		
+		System.out.print(queryTemplate);
 	    Object[] parameters = objectList.toArray();
-		 
+
 	    List<User> usersList = jdbcTemplate.query(queryTemplate, extractor, parameters);
-	    
+	    System.out.println(usersList.toString());
 	    return usersList;
 	}
 

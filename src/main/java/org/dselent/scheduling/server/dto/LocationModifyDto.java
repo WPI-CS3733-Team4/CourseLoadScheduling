@@ -91,12 +91,12 @@ public class LocationModifyDto {
 
     @Override
     public String toString() {
-        return "LocationModifyDto{" +
-                "LocationId=" + LocationId +
-                ", Building='" + Building + '\'' +
-                ", Room=" + Room +
-                ", RoomSize=" + RoomSize +
-                '}';
+        return "{"+
+                "\'LocationId\'=\'"+LocationId+"\'"+
+                ",\'Building\'=\'" + Building +"\'"+
+                ",\'Room\'=\'"+Room+"\'"+
+                ",\'RoomSize\'=\'"+RoomSize+"\'"+
+                "}";
     }
 
     /**

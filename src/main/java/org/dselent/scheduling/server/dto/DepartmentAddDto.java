@@ -64,14 +64,14 @@ public class DepartmentAddDto
 
     @Override
     public String toString() {
-        return "DepartmentAddDto{" +
-                "Department=" + Department +
-                '}';
+        return "{"+
+                "\'Department\'=\'"+Department+"\'"+
+                "}";
     }
 
     /**
      * Creates builder to build {@link DepartmentAddDto}.
-     * @return created builder
+     * @return created builderDepartment_Id
      */
     @Generated("SparkTools")
     public static Builder builder()

@@ -35,4 +35,19 @@ public class UserPermissionServiceImpl implements UserPermissionService
 
         return rowsAffectedList;
     }
+
+    public List<UsersPermission> grabUsersPermissions() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+
+        List<String> columns = new ArrayList<>();
+        columns.add(UsersPermission.getColumnName(UsersPermission.Columns.ID));
+        columns.add(UsersPermission.getColumnName(UsersPermission.Columns.USERS_ID));
+        columns.add(UsersPermission.getColumnName(UsersPermission.Columns.ROLE));
+        columns.add(UsersPermission.getColumnName(UsersPermission.Columns.CREATED_AT));
+        columns.add(UsersPermission.getColumnName(UsersPermission.Columns.UPDATED_AT));
+
+        return usersPermissionsDao.select(columns, queryTermList, null);
+    }
 }

@@ -84,10 +84,10 @@ public class CourseSectionAddDto
 
     @Override
     public String toString() {
-        return "CourseSectionAddDto{" +
-                "CourseId=" + CourseId +
-                ", SectionType='" + SectionType + '\'' +
-                ", Term='" + Term + '\'' +
+        return "{"+
+                "\'CourseId\'=\'"+CourseId+"\'"+
+                ",\'SectionType\'=\'"+SectionType+"\'"+
+                ",\'Term=\'"+Term +"\'"+
                 '}';
     }
 

@@ -16,4 +16,5 @@ public interface TermService
     public List<Integer> addTerm(TermAddDto termAddDto) throws SQLException;
     public List<Integer> modifyTerm(TermModifyDto termModifyDto) throws  SQLException;
     public List<Integer> removeTerm(TermRemoveDto termRemoveDto) throws SQLException;
+    public List<Term> grabTerms() throws SQLException;
 }

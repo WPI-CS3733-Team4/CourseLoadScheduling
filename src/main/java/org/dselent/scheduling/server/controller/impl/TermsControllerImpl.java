@@ -9,6 +9,7 @@ import org.dselent.scheduling.server.dto.TermRemoveDto;
 import org.dselent.scheduling.server.dto.TermAddDto;
 import org.dselent.scheduling.server.dto.TermModifyDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.Term;
 import org.dselent.scheduling.server.requests.TermRemove;
 import org.dselent.scheduling.server.requests.TermModify;
 import org.dselent.scheduling.server.requests.TermAdd;
@@ -47,6 +48,9 @@ public class TermsControllerImpl implements TermsController
         // add any objects that need to be returned to the success list
         String response = "";
         List<Object> success = new ArrayList<Object>();
+
+        success.add("{'json_test':{'item1':1,'item2':2}");
+        success.add("balbalalbsabld");
 
         String termName = request.get(TermAdd.getBodyName(TermAdd.BodyKey.TERM_NAME));
 
@@ -101,6 +105,32 @@ public class TermsControllerImpl implements TermsController
         termService.removeTerm(termRemoveDto);
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
+        return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
+    }
+
+    public ResponseEntity<String> getTerms(@RequestBody Map<String, String> request) throws Exception
+    {
+        System.out.println("Terms controller reached");
+
+
+        //get all the users (how do we do the responseSet????)
+        List<Term> listOfTerms = termService.grabTerms();
+
+        List<String> termsEntryList = new ArrayList<String>();
+
+        for (Term term : listOfTerms){
+            termsEntryList.add(term.toString());
+        }
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        //Add the list of the users to the response
+        success.add(termsEntryList);
+
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
         return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
 }

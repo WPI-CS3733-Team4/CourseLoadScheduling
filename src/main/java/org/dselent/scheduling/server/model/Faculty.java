@@ -164,12 +164,11 @@ public class Faculty extends Model {
 
     @Override
     public String toString() {
-        return "Faculty{" +
-                "id=" + id +
-                ", usersId=" + usersId +
-                ", requiredCredits=" + requiredCredits +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', \'usersId\'=\'" + usersId +
+                "\', \'requiredCredits\'=\'" + requiredCredits +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }

@@ -3,6 +3,7 @@ package org.dselent.scheduling.server.controller.impl;
 import org.dselent.scheduling.server.controller.LocationController;
 import org.dselent.scheduling.server.dto.*;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.Location;
 import org.dselent.scheduling.server.requests.*;
 import org.dselent.scheduling.server.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class LocationControllerImpl implements LocationController{
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
-        Integer locationId = Integer.parseInt(request.get(LocationModify.getBodyName(LocationModify.BodyKey.LOCATION_ID)));
+        Integer locationId = Integer.parseInt(request.get(LocationModify.getBodyName(LocationModify.BodyKey.LOCATIONS_ID)));
         String buildingName = request.get(LocationAdd.getBodyName(LocationAdd.BodyKey.BUILDING));
         Integer room = Integer.parseInt(request.get(LocationAdd.getBodyName(LocationAdd.BodyKey.ROOM)));
         Integer roomSize = Integer.parseInt(request.get(LocationAdd.getBodyName(LocationAdd.BodyKey.ROOM_SIZE)));
@@ -83,7 +84,7 @@ public class LocationControllerImpl implements LocationController{
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
-        Integer locationId = Integer.parseInt(request.get(LocationModify.getBodyName(LocationModify.BodyKey.LOCATION_ID)));
+        Integer locationId = Integer.parseInt(request.get(LocationModify.getBodyName(LocationModify.BodyKey.LOCATIONS_ID)));
 
         LocationRemoveDto.Builder builder = LocationRemoveDto.builder();
         LocationRemoveDto locationRemoveDto = builder.withLocationId(locationId)
@@ -93,6 +94,32 @@ public class LocationControllerImpl implements LocationController{
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    public ResponseEntity<String> getLocations(@RequestBody Map<String, String> request) throws Exception
+    {
+        System.out.println("Locations controller reached");
+
+
+        //get all the users (how do we do the responseSet????)
+        List<Location> listOfLocations = locationService.grabLocations();
+
+        List<String> locationsEntryList = new ArrayList<String>();
+
+        for (Location location : listOfLocations){
+            locationsEntryList.add(location.toString());
+        }
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        //Add the list of the users to the response
+        success.add(listOfLocations);
+
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+        return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
 
 }

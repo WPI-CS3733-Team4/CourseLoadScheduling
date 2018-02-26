@@ -34,16 +34,16 @@ public class UsersDaoTest
     public void testUsersDao() throws SQLException
     {
     	// INSERT
-        AppConfig ac = new AppConfig();
-        DataSource ds = ac.dataSource();
-
-        ds.getConnection();
+//        AppConfig ac = new AppConfig();
+//        DataSource ds = ac.dataSource();
+//
+//        ds.getConnection();
 
     	User user1 = new User();
     	user1.setUserName("user1");
     	user1.setFirstName("user");
     	user1.setLastName("one");
-    	user1.setEmail("userone@wpi.edu");
+    	user1.setEmail("usessrone@wpi.edu");
     	user1.setEncryptedPassword("11111111"); // simplified for now
     	user1.setSalt("11111111"); // also simplified for now
     	//user1.setUserStateId(1); // assumes 1 = activated

@@ -27,6 +27,9 @@ public interface CourseSectionsController
     @RequestMapping(method=RequestMethod.POST, value= CourseSectionRemove.REQUEST_NAME)
     public ResponseEntity<String> remove(@RequestBody Map<String,String> request) throws Exception;
 
+    @RequestMapping(method=RequestMethod.POST, value= "getCourseSections")
+    public ResponseEntity<String> getCourseSections(@RequestBody Map<String, String> request) throws Exception;
+
 }
 
 

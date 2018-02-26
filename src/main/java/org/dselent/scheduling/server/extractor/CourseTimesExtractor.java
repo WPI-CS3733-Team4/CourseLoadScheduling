@@ -34,7 +34,7 @@ public class CourseTimesExtractor extends Extractor<List<CourseTime>> {
             result.setDayOfWeek(rs.getInt(CourseTime.getColumnName(CourseTime.Columns.DAY_OF_WEEK)));
             result.setStartTime(rs.getInt(CourseTime.getColumnName(CourseTime.Columns.START_TIME)));
             result.setEndTime(rs.getInt(CourseTime.getColumnName(CourseTime.Columns.END_TIME)));
-            result.setLocationID(rs.getInt(CourseTime.getColumnName(CourseTime.Columns.LOCATION_ID)));
+            result.setLocationID(rs.getInt(CourseTime.getColumnName(CourseTime.Columns.LOCATIONS_ID)));
             if (rs.wasNull()) {
                 result.setLocationID(null);
             }

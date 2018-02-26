@@ -139,11 +139,10 @@ public class Term extends Model
 
     @Override
     public String toString() {
-        return "Term{" +
-                "id=" + id +
-                ", termName='" + termName + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', termName\'=\'" + termName +
+                "\', createdAt\'=\'" + createdAt +
+                "\', updatedAt\'=\'" + updatedAt +
+                "\'}";
     }
 }

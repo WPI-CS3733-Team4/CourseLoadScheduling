@@ -134,11 +134,10 @@ public class Department extends Model {
 
     @Override
     public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", department='" + department + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', \'department\'=\'" + department +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }

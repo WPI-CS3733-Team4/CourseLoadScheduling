@@ -108,11 +108,11 @@ public class CourseDepartmentAddDto {
 
     @Override
     public String toString() {
-        return "CourseDepartmentAddDto{" +
-                "courseId=" + courseId +
-                ", departmentId=" + departmentId +
-                ", courseNumber=" + courseNumber +
-                '}';
+        return "{" +
+                "\'courseId\'=\'"+courseId+ "\'"+
+                "\',\'departmentId\'=\'"+departmentId+"\'"+
+                "\',\'courseNumber\'=\'"+courseNumber+"\'"+
+                "}";
     }
 
     /**

@@ -72,9 +72,9 @@ public class UserDeactivateDto
 
     @Override
     public String toString() {
-        return "UserDeactivateDto{" +
-                "userId='" + userId + '\'' +
-                '}';
+        return "{"+
+                "\'userId\'=\'"+userId+"\'"+
+                "}";
     }
 
     /**

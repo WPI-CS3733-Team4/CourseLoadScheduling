@@ -67,9 +67,9 @@ public class TermAddDto
 
     @Override
     public String toString() {
-        return "TermAddDto{" +
-                "TermName='" + TermName + '\'' +
-                '}';
+        return "{"+
+                "\'TermName\'=\'"+TermName+"\'"+
+                "}";
     }
 
     /**

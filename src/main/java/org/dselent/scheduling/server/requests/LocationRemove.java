@@ -40,7 +40,7 @@ public class LocationRemove
     /* change this*/
     public static enum BodyKey
     {
-        LOCATION_ID
+        LOCATIONS_ID
     }
 
 

@@ -31,6 +31,10 @@ public interface UsersController
     @RequestMapping(method=RequestMethod.POST, value= UserDeactivate.REQUEST_NAME)
     public ResponseEntity<String> deactivate(@RequestBody Map<String, String> request) throws Exception;
 
+    //Requests a list of all Users
+    @RequestMapping(method=RequestMethod.POST, value= GetUsers.REQUEST_NAME)
+    public ResponseEntity<String> get(@RequestBody Map<String, String> request) throws Exception;
+
 }
 
 	

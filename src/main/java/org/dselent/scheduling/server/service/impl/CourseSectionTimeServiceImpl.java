@@ -48,7 +48,7 @@ public class CourseSectionTimeServiceImpl implements CourseSectionTimeService{
         courseInsertColumnNameList.add(CourseTime.getColumnName(CourseTime.Columns.DAY_OF_WEEK));
         courseInsertColumnNameList.add(CourseTime.getColumnName(CourseTime.Columns.START_TIME));
         courseInsertColumnNameList.add(CourseTime.getColumnName(CourseTime.Columns.END_TIME));
-        courseInsertColumnNameList.add(CourseTime.getColumnName(CourseTime.Columns.LOCATION_ID));
+        courseInsertColumnNameList.add(CourseTime.getColumnName(CourseTime.Columns.LOCATIONS_ID));
 
         courseKeyHolderColumnNameList.add(CourseTime.getColumnName(CourseTime.Columns.ID));
         courseKeyHolderColumnNameList.add(CourseTime.getColumnName(CourseTime.Columns.CREATED_AT));
@@ -83,7 +83,7 @@ public class CourseSectionTimeServiceImpl implements CourseSectionTimeService{
         rowsAffectedList.add(courseTimesDao.update(CourseTime.getColumnName(CourseTime.Columns.DAY_OF_WEEK),dayOfWeek,queryTermList));
         rowsAffectedList.add(courseTimesDao.update(CourseTime.getColumnName(CourseTime.Columns.START_TIME),startTime,queryTermList));
         rowsAffectedList.add(courseTimesDao.update(CourseTime.getColumnName(CourseTime.Columns.END_TIME),endTime,queryTermList));
-        rowsAffectedList.add(courseTimesDao.update(CourseTime.getColumnName(CourseTime.Columns.LOCATION_ID),locationId,queryTermList));
+        rowsAffectedList.add(courseTimesDao.update(CourseTime.getColumnName(CourseTime.Columns.LOCATIONS_ID),locationId,queryTermList));
 
         return rowsAffectedList;
     }
@@ -100,5 +100,22 @@ public class CourseSectionTimeServiceImpl implements CourseSectionTimeService{
         rowsAffectedList.add(courseTimesDao.delete(queryTermList));
 
         return rowsAffectedList;
+    }
+
+    public List<CourseTime> grabCourseSectionTimes() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.ID));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.COURSE_SECTIONS_ID));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.DAY_OF_WEEK));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.START_TIME));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.END_TIME));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.LOCATIONS_ID));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.CREATED_AT));
+        columns.add(CourseTime.getColumnName(CourseTime.Columns.UPDATED_AT));
+
+        return courseTimesDao.select(columns, queryTermList, null);
     }
 }
