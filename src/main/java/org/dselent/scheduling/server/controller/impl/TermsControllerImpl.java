@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gson.JsonObject;
 import org.dselent.scheduling.server.controller.TermsController;
 import org.dselent.scheduling.server.dto.TermRemoveDto;
 import org.dselent.scheduling.server.dto.TermAddDto;
@@ -115,14 +114,20 @@ public class TermsControllerImpl implements TermsController
 
 
         //get all the users (how do we do the responseSet????)
-        List<Term> listOfUsers = termService.grabTerms();
+        List<Term> listOfTerms = termService.grabTerms();
+
+        List<String> termsEntryList = new ArrayList<String>();
+
+        for (Term term : listOfTerms){
+            termsEntryList.add(term.toString());
+        }
 
         String response = "";
 
         List<Object> success = new ArrayList<Object>();
 
         //Add the list of the users to the response
-        success.add(listOfUsers);
+        success.add(termsEntryList);
 
 
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);

@@ -143,7 +143,7 @@ public class CourseSectionTimesControllerImpl implements CourseSectionTimesContr
         List<Object> success = new ArrayList<Object>();
 
         //Add the list of the users to the response
-        success.add(listOfCourseSectionTimes);
+        success.add(courseSectionTimesEntryList);
 
 
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);

@@ -94,14 +94,20 @@ public class DepartmentsControllerImpl implements DepartmentsController {
 
 
 
-        List<Department> listOfUsers = departmentService.grabDepartments();
+        List<Department> listOfDepartments = departmentService.grabDepartments();
+
+        List<String> departmentsEntryList = new ArrayList<String>();
+
+        for (Department department : listOfDepartments){
+            departmentsEntryList.add(department.toString());
+        }
 
         String response = "";
 
         List<Object> success = new ArrayList<Object>();
 
         //Add the list of the users to the response
-        success.add(listOfUsers);
+        success.add(departmentsEntryList);
 
 
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);

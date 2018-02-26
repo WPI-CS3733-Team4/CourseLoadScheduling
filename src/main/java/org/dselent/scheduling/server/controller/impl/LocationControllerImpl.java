@@ -104,6 +104,12 @@ public class LocationControllerImpl implements LocationController{
         //get all the users (how do we do the responseSet????)
         List<Location> listOfLocations = locationService.grabLocations();
 
+        List<String> locationsEntryList = new ArrayList<String>();
+
+        for (Location location : listOfLocations){
+            locationsEntryList.add(location.toString());
+        }
+
         String response = "";
 
         List<Object> success = new ArrayList<Object>();

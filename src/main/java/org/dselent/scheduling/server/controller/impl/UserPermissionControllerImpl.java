@@ -48,12 +48,18 @@ public class UserPermissionControllerImpl implements UserPermissionController{
         //get all the users (how do we do the responseSet????)
         List<UsersPermission> listOfUsersPermissions = usersPermissionService.grabUsersPermissions();
 
+        List<String> userPermissionEntryList = new ArrayList<String>();
+
+        for (UsersPermission usersPermission : listOfUsersPermissions){
+            userPermissionEntryList.add(usersPermission.toString());
+        }
+
         String response = "";
 
         List<Object> success = new ArrayList<Object>();
 
         //Add the list of the users to the response
-        success.add(listOfUsersPermissions);
+        success.add(userPermissionEntryList);
 
 
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
