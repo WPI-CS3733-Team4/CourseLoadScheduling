@@ -168,16 +168,17 @@ public class UsersControllerImpl implements UsersController
 
 
 		//get all the users (how do we do the responseSet????)
-		List<User> listOfUsers = usersExtractor.extractData(null);
+		List<User> listOfUsers = userService.grabUsers();
 
-
-		//serialize list of users to a response string
 		String response = "";
+
 		List<Object> success = new ArrayList<Object>();
 
-		//send the string
-		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+		//Add the list of the users to the response
+		success.add(listOfUsers);
 
+
+		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 		return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
 	}
 }

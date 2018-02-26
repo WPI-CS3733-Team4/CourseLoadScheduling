@@ -173,6 +173,19 @@ public class UserServiceImpl implements UserService
 
 	public List<User> grabUsers() throws SQLException
 	{
-		return null;
+		List<QueryTerm> queryTermList = new ArrayList<>();
+
+		List<String> columns = new ArrayList<>();
+		columns.add(User.getColumnName(User.Columns.ID));
+		columns.add(User.getColumnName(User.Columns.USER_NAME));
+		columns.add(User.getColumnName(User.Columns.FIRST_NAME));
+		columns.add(User.getColumnName(User.Columns.LAST_NAME));
+		columns.add(User.getColumnName(User.Columns.EMAIL));
+		columns.add(User.getColumnName(User.Columns.ENCRYPTED_PASSWORD));
+		columns.add(User.getColumnName(User.Columns.SALT));
+		columns.add(User.getColumnName(User.Columns.CREATED_AT));
+		columns.add(User.getColumnName(User.Columns.UPDATED_AT));
+
+		return usersDao.select(columns, queryTermList, null);
 	}
 }
