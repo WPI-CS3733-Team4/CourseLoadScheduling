@@ -12,4 +12,7 @@ import java.util.Map;
 public interface UserPermissionController {
     @RequestMapping(method = RequestMethod.POST, value = AdminChangeUserRole.REQUEST_NAME)
     public ResponseEntity<String> changeUserRole(@RequestBody Map<String, String> request) throws Exception;
+
+    @RequestMapping(method = RequestMethod.POST, value = "getUserPermissions")
+    public ResponseEntity<String> getUserPermissions(@RequestBody Map<String, String> request) throws Exception;
 }
