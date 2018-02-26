@@ -17,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.jws.soap.SOAPBinding;
+
 /**
  * Controller for handling requests related to the user such as logging in or registering.
  * Controller methods are the first methods reached by the request server-side (with special exception).
@@ -86,7 +88,14 @@ public class UsersControllerImpl implements UsersController
 				.withPassword(password)
 				.build();
 
-		userService.loginUser(userLoginDto);
+		User retUser =  userService.loginUser(userLoginDto);
+		if(retUser != null){
+
+			success.add(retUser);
+		}else{
+
+			success.add("WRONG_INFO");
+		}
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions

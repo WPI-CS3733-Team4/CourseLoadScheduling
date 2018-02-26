@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.JsonObject;
 import org.dselent.scheduling.server.controller.TermsController;
 import org.dselent.scheduling.server.dto.TermRemoveDto;
 import org.dselent.scheduling.server.dto.TermAddDto;
@@ -47,7 +48,6 @@ public class TermsControllerImpl implements TermsController
         // add any objects that need to be returned to the success list
         String response = "";
         List<Object> success = new ArrayList<Object>();
-
 
         success.add("{'json_test':{'item1':1,'item2':2}");
         success.add("balbalalbsabld");

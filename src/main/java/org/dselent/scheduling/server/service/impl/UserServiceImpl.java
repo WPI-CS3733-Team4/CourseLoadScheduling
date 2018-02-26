@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.dselent.scheduling.server.dao.UsersDao;
 import org.dselent.scheduling.server.dto.*;
+import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.model.User;
 import org.dselent.scheduling.server.service.UserService;
+import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -69,7 +71,7 @@ public class UserServiceImpl implements UserService
     	userKeyHolderColumnNameList.add(User.getColumnName(User.Columns.UPDATED_AT));
 		
     	rowsAffectedList.add(usersDao.insert(user, userInsertColumnNameList, userKeyHolderColumnNameList));
-
+		System.out.println("user reg done!");
 		//
      	
     	// for now, assume users can only register with default role id
@@ -105,19 +107,29 @@ public class UserServiceImpl implements UserService
 		// Create Query Term
 		queryTermList.add(new QueryTerm(User.getColumnName(User.Columns.USER_NAME), EQUAL, userName, null));
 
-		List<User> usersList = usersDao.select(userSelectColumnNameList, queryTermList, null);
+		System.out.println(userName+queryTermList.toString());
+
+		List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
+		Pair<String, ColumnOrder> orderPair1 = new Pair<String, ColumnOrder>(User.getColumnName(User.Columns.USER_NAME), ColumnOrder.ASC);
+		orderByList.add(orderPair1);
+
+		List<User> usersList = usersDao.select(userSelectColumnNameList, queryTermList, orderByList);
+
+		System.out.println(usersList.toString());
 
 		if(usersList.isEmpty()){
+			System.out.println("userNotFound");
 			return null; // Could not find a user with that user name so dont both with everything else
 		}
 
+		System.out.println("userFound");
 		User targetUser = usersList.get(0); // There should only be one anyways
 
 		// Check if the password and salt match
 		String saltedPassword = password + targetUser.getSalt();
 		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
 		String encryptedPassword = passwordEncorder.encode(saltedPassword);
-
+		System.out.println(targetUser.getSalt()+' '+encryptedPassword+' '+targetUser.getEncryptedPassword());
 		if(encryptedPassword.equals(targetUser.getEncryptedPassword())){
 			return targetUser;
 		} else {
