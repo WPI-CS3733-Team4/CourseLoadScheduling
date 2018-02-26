@@ -82,10 +82,10 @@ public class GetSchedulesDto {
 
     @Override
     public String toString() {
-        return "GetSchedulesDto{" +
-                "SearchBy='" + SearchBy + '\'' +
-                ", Query='" + Query + '\'' +
-                ", Term='" + Term + '\'' +
+        return "{" +
+                "\'SearchBy\'=\'" + SearchBy + '\'' +
+                ", \'Query\'=\'" + Query + '\'' +
+                ", \'Term=\'" + Term + '\'' +
                 '}';
     }
 

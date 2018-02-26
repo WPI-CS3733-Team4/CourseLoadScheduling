@@ -64,9 +64,9 @@ public class DepartmentAddDto
 
     @Override
     public String toString() {
-        return "DepartmentAddDto{" +
-                "Department=" + Department +
-                '}';
+        return "{" +
+                "\'Department\'=\'" + Department +
+                "\'}";
     }
 
     /**

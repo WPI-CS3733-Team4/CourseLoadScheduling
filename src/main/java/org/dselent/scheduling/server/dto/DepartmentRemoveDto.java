@@ -64,9 +64,9 @@ public class DepartmentRemoveDto
 
     @Override
     public String toString() {
-        return "DepartmentRemoveDto{" +
-                "Department_Id=" + Department_Id +
-                '}';
+        return "{" +
+                "\'Department_Id\'=\'" + Department_Id +
+                "\'}";
     }
 
     /**

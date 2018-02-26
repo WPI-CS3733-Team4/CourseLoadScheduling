@@ -68,9 +68,9 @@ public class UserLoginDto
 
     @Override
     public String toString() {
-        return "UserLoginDto{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+        return "{" +
+                "\'userName\'=\'" + userName + '\'' +
+                ", \'password\'=\'" + password + '\'' +
                 '}';
     }
 

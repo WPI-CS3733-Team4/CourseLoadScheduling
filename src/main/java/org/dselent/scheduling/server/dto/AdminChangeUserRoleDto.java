@@ -102,9 +102,9 @@ public class AdminChangeUserRoleDto
 
     @Override
     public String toString() {
-        return "AdminChangeUserRoleDto{" +
-                "userId=" + userId +
-                ", role='" + role + '\'' +
+        return "{" +
+                "\'userId\'=\'" + userId +
+                "\', \'role\'=\''" + role + '\'' +
                 '}';
     }
 

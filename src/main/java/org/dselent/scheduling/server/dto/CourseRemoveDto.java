@@ -81,9 +81,9 @@ public class CourseRemoveDto
 
     @Override
     public String toString() {
-        return "CourseRemoveDto{" +
-                "courseId=" + courseId +
-                '}';
+        return "{" +
+                "\'courseId\'=\'" + courseId +
+                "\'}";
     }
 
 

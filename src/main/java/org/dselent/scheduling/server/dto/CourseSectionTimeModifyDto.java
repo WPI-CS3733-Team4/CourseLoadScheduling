@@ -100,13 +100,13 @@ public class CourseSectionTimeModifyDto
 
     @Override
     public String toString() {
-        return "CourseSectionTimeModifyDto{" +
-                "CourseSectionTimeId=" + CourseSectionTimeId +
-                ", CourseSectionId=" + CourseSectionId +
-                ", DayOfWeek='" + DayOfWeek + '\'' +
-                ", StartTime=" + StartTime +
-                ", EndTime=" + EndTime +
-                ", Location='" + LocationId + '\'' +
+        return "{" +
+                "\'CourseSectionTimeId\'=\'" + CourseSectionTimeId +
+                "\', \'CourseSectionId\'=\'" + CourseSectionId +
+                "\', \'DayOfWeek\'=\'" + DayOfWeek + '\'' +
+                ", \'StartTime\'=\'" + StartTime +
+                ", \'EndTime\'=\'" + EndTime +
+                "\', \'Location=\'" + LocationId + '\'' +
                 '}';
     }
 

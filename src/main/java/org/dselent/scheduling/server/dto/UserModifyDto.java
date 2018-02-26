@@ -100,13 +100,13 @@ public class UserModifyDto
 
     @Override
     public String toString() {
-        return "UserModifyDto{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+        return "{" +
+                "\'id\'=\'" + id +
+                "\', \'userName\'=\'" + userName + '\'' +
+                ", \'firstName\'=\'" + firstName + '\'' +
+                ", \'lastName\'=\'" + lastName + '\'' +
+                ", \'email\'=\'" + email + '\'' +
+                ", \'password\'=\'" + password + '\'' +
                 '}';
     }
 

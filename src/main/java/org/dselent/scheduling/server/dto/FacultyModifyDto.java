@@ -84,11 +84,11 @@ public class FacultyModifyDto
 
     @Override
     public String toString() {
-        return "FacultyModifyDto{" +
-                "UserId=" + UserId +
-                ", FacultyId=" + FacultyId +
-                ", RequiredCredits=" + RequiredCredits +
-                '}';
+        return "{" +
+                "\'UserId\'=\'" + UserId +
+                "\', \'FacultyId\'=\'" + FacultyId +
+                "\', \'RequiredCredits\'=\'" + RequiredCredits +
+                "\'}";
     }
 
     /**
