@@ -177,4 +177,18 @@ public class CourseSectionServiceImpl implements CourseSectionService{
         return rowsAffectedList;
 
     }
+
+    public List<CourseSection> grabCourseSections() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.ID));
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.COURSES_ID));
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.SECTION_TYPE));
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.CREATED_AT));
+        columns.add(CourseSection.getColumnName(CourseSection.Columns.UPDATED_AT));
+
+        return courseSectionsDao.select(columns, queryTermList, null);
+    }
 }

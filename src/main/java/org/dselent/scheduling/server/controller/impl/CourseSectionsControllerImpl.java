@@ -7,6 +7,7 @@ import java.util.Map;
 import org.dselent.scheduling.server.controller.CourseSectionsController;
 import org.dselent.scheduling.server.dto.*;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.CourseSection;
 import org.dselent.scheduling.server.requests.*;
 import org.dselent.scheduling.server.service.CourseSectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,5 +96,25 @@ public class CourseSectionsControllerImpl implements CourseSectionsController{
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    public ResponseEntity<String> getCourseSections(@RequestBody Map<String, String> request) throws Exception
+    {
+        System.out.println("Course Sections controller reached");
+
+
+        //get all the users (how do we do the responseSet????)
+        List<CourseSection> listOfCourseSections = courseSectionService.grabCourseSections();
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        //Add the list of the users to the response
+        success.add(listOfCourseSections);
+
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+        return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
 }
