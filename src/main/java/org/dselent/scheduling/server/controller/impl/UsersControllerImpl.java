@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.dselent.scheduling.server.controller.UsersController;
 import org.dselent.scheduling.server.dto.*;
+import org.dselent.scheduling.server.extractor.UsersExtractor;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.User;
 import org.dselent.scheduling.server.requests.*;
 import org.dselent.scheduling.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class UsersControllerImpl implements UsersController
 {
 	@Autowired
     private UserService userService;
+
+	@Autowired
+	private UsersExtractor usersExtractor;
     
 	/**
 	 * 
@@ -152,6 +157,25 @@ public class UsersControllerImpl implements UsersController
 				.build();
 
 		userService.deactivateUser(userDeactivateDto);
+		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+		return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
+	}
+
+	public ResponseEntity<String> get(@RequestBody Map<String, String> request) throws Exception
+	{
+		System.out.println("Users controller reached");
+
+
+		//get all the users (how do we do the responseSet????)
+		List<User> listOfUsers = usersExtractor.extractData(null);
+
+
+		//serialize list of users to a response string
+		String response = "";
+		List<Object> success = new ArrayList<Object>();
+
+		//send the string
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
