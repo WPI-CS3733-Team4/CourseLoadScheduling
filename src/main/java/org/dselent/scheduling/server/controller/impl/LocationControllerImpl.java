@@ -3,6 +3,7 @@ package org.dselent.scheduling.server.controller.impl;
 import org.dselent.scheduling.server.controller.LocationController;
 import org.dselent.scheduling.server.dto.*;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.Location;
 import org.dselent.scheduling.server.requests.*;
 import org.dselent.scheduling.server.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +94,26 @@ public class LocationControllerImpl implements LocationController{
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    public ResponseEntity<String> getLocations(@RequestBody Map<String, String> request) throws Exception
+    {
+        System.out.println("Locations controller reached");
+
+
+        //get all the users (how do we do the responseSet????)
+        List<Location> listOfLocations = locationService.grabLocations();
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        //Add the list of the users to the response
+        success.add(listOfLocations);
+
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+        return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
 
 }

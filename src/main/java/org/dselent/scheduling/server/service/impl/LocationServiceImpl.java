@@ -92,4 +92,20 @@ public class LocationServiceImpl implements LocationService{
         return rowAffectedList;
     }
 
+    public List<Location> grabLocations() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(Location.getColumnName(Location.Columns.ID));
+        columns.add(Location.getColumnName(Location.Columns.BUILDING));
+        columns.add(Location.getColumnName(Location.Columns.ROOM));
+        columns.add(Location.getColumnName(Location.Columns.ROOM_SIZE));
+        columns.add(Location.getColumnName(Location.Columns.CREATED_AT));
+        columns.add(Location.getColumnName(Location.Columns.UPDATED_AT));
+
+
+        return locationsDao.select(columns, queryTermList, null);
+    }
+
 }

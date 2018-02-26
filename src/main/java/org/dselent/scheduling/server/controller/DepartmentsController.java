@@ -27,6 +27,9 @@ public interface DepartmentsController
     @RequestMapping(method=RequestMethod.POST, value= DepartmentRemove.REQUEST_NAME)
     public ResponseEntity<String> remove(@RequestBody Map<String,String> request) throws Exception;
 
+    @RequestMapping(method=RequestMethod.POST, value= "getDepartments")
+    public ResponseEntity<String> getDepartments(@RequestBody Map<String, String> request) throws Exception;
+
 }
 
 

@@ -9,6 +9,7 @@ import org.dselent.scheduling.server.dto.CourseAddDto;
 import org.dselent.scheduling.server.dto.CourseRemoveDto;
 import org.dselent.scheduling.server.dto.CourseModifyDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.Course;
 import org.dselent.scheduling.server.requests.CourseRemove;
 import org.dselent.scheduling.server.requests.CourseModify;
 import org.dselent.scheduling.server.requests.CourseAdd;
@@ -110,6 +111,26 @@ public class CoursesControllerImpl implements CoursesController
         courseService.removeCourse(termRemoveDto);
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
+        return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
+    }
+
+    public ResponseEntity<String> getCourses(@RequestBody Map<String, String> request) throws Exception
+    {
+        System.out.println("Users controller reached");
+
+
+        //get all the users (how do we do the responseSet????)
+        List<Course> listOfCourses = courseService.grabCourses();
+
+        String response = "";
+
+        List<Object> success = new ArrayList<Object>();
+
+        //Add the list of the users to the response
+        success.add(listOfCourses);
+
+
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
         return new ResponseEntity<String>(response, HttpStatus.OK); // We will have to return some info about the user, like access permissions
     }
 }

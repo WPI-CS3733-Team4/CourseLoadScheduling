@@ -70,4 +70,17 @@ public class TermServiceImpl implements TermService
 
         return rowsAffectedList;
     }
+
+    public List<Term> grabTerms() throws SQLException
+    {
+        List<QueryTerm> queryTermList = new ArrayList<>();
+
+        List<String> columns = new ArrayList<>();
+        columns.add(Term.getColumnName(Term.Columns.ID));
+        columns.add(Term.getColumnName(Term.Columns.TERM_NAME));
+        columns.add(Term.getColumnName(Term.Columns.CREATED_AT));
+        columns.add(Term.getColumnName(Term.Columns.UPDATED_AT));
+
+        return termsDao.select(columns, queryTermList, null);
+    }
 }

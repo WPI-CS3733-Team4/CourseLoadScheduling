@@ -11,6 +11,7 @@ import java.util.List;
 import org.dselent.scheduling.server.dto.CourseAddDto;
 import org.dselent.scheduling.server.dto.CourseModifyDto;
 import org.dselent.scheduling.server.dto.CourseRemoveDto;
+import org.dselent.scheduling.server.model.Course;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,4 +27,5 @@ public interface CourseService {
     public List<Integer> addCourse(CourseAddDto dto) throws  SQLException;
     public List<Integer> modifyCourse(CourseModifyDto dto) throws SQLException;
     public List<Integer> removeCourse(CourseRemoveDto dto) throws  SQLException;
+    public List<Course> grabCourses() throws SQLException;
 }

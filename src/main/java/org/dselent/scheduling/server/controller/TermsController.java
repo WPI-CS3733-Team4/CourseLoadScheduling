@@ -25,6 +25,8 @@ public interface TermsController
     @RequestMapping(method=RequestMethod.POST, value= TermRemove.REQUEST_NAME)
     public ResponseEntity<String> remove(@RequestBody Map<String,String> request) throws Exception;
 
+    @RequestMapping(method=RequestMethod.POST, value= "getTerms")
+    public ResponseEntity<String> getTerms(@RequestBody Map<String, String> request) throws Exception;
 
 }
 
