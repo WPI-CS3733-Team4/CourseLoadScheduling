@@ -152,12 +152,11 @@ public class CourseRequest extends Model {
 
     @Override
     public String toString() {
-        return "CourseRequest{" +
-                "id=" + id +
-                ", facultyId=" + facultyId +
-                ", courseSectionsId=" + courseSectionsId +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', \'facultyId\'=\'" + facultyId +
+                "\', \'courseSectionsId\'=\'" + courseSectionsId +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }

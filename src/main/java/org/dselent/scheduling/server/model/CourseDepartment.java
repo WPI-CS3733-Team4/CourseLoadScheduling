@@ -160,13 +160,11 @@ public class CourseDepartment extends Model {
 
     @Override
     public String toString() {
-        return "CourseDepartment{" +
-                "id=" + id +
-                ", courseId=" + courseId +
-                ", departmentId=" + departmentId +
-                ", courseNumber=" + courseNumber +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +"\', \'courseId\'=\'" + courseId +
+                "\', \'departmentId\'=\'" + departmentId +
+                "\', \'courseNumber\'=\'" + courseNumber +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }

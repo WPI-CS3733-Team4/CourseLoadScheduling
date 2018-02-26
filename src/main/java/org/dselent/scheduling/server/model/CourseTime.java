@@ -183,15 +183,14 @@ public class CourseTime extends Model {
 
     @Override
     public String toString() {
-        return "CourseTime{" +
-                "id=" + id +
-                ", courseSectionsId=" + courseSectionsId +
-                ", dayOfWeek=" + dayOfWeek +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", locationID=" + locationID +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', \'courseSectionsId\'=\'" + courseSectionsId +
+                "\', \'dayOfWeek\'=\'" + dayOfWeek +
+                "\', \'startTime\'=\'" + startTime +
+                "\', \'endTime\'=\'" + endTime +
+                "\', \'locationID\'=\'" + locationID +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }

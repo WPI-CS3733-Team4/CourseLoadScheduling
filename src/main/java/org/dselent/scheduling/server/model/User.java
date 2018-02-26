@@ -217,16 +217,15 @@ public class User extends Model
 
 	@Override
 	public String toString() {
-		return "User{" +
-				"id=" + id +
-				", userName='" + userName + '\'' +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", email='" + email + '\'' +
-				", encryptedPassword='" + encryptedPassword + '\'' +
-				", salt='" + salt + '\'' +
-				", createdAt=" + createdAt +
-				", updatedAt=" + updatedAt +
-				'}';
+		return "{\'id=" + id +
+				"\', \'userName\'=\'" + userName +
+				"\', \'firstName\'=\'" + firstName +
+				"\', \'lastName\'=\'" + lastName +
+				"\', \'email\'=\'" + email +
+				"\', \'encryptedPassword\'=\'" + encryptedPassword +
+				"\', \'salt\'=\'" + salt +
+				"\', \'createdAt\'=\'" + createdAt.toString() +
+				"\', \'updatedAt\'=\'" + updatedAt.toString() +
+				"\'}";
 	}
 }

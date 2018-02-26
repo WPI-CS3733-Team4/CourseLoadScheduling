@@ -167,13 +167,12 @@ public class Location extends Model {
 
     @Override
     public String toString() {
-        return "Location{" +
-                "id=" + id +
-                ", building='" + building + '\'' +
-                ", room=" + room +
-                ", roomSize=" + roomSize +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', \'building\'=\'" + building +
+                "\', \'room\'=\'" + room +
+                "\', \'roomSize\'=\'" + roomSize +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }

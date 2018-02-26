@@ -151,12 +151,11 @@ public class UsersPermission extends Model{
 
     @Override
     public String toString() {
-        return "UserPermission{" +
-                "id=" + id +
-                ", usersId=" + usersId +
-                ", role='" + role + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return "{\'id\'=\'" + id +
+                "\', \'usersId\'=\'" + usersId +
+                "\', \'role\'=\'" + role +
+                "\', \'createdAt\'=\'" + createdAt.toString() +
+                "\', \'updatedAt\'=\'" + updatedAt.toString() +
+                "\'}";
     }
 }
